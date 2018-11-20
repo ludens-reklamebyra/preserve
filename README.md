@@ -2,6 +2,8 @@
 
 A state lib for keeping track of and change localStorage data
 
+[![Build Status](https://travis-ci.org/ludens-reklamebyra/preserve.svg?branch=master)](https://travis-ci.org/ludens-reklamebyra/preserve) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 ## Install
 
 ```sh

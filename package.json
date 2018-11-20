@@ -2,8 +2,8 @@
   "name": "@ludens-reklame/preserve",
   "version": "1.0.1",
   "description": "A handy localstorage util",
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "license": "MIT",
   "private": false,
   "jest": {
@@ -15,7 +15,7 @@
     },
     "testPathIgnorePatterns": [
       "/node_modules/",
-      "/dist/"
+      "/lib/"
     ],
     "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
@@ -43,7 +43,7 @@
   },
   "scripts": {
     "prepublish": "yarn build",
-    "build:clean": "rimraf dist",
+    "build:clean": "rimraf lib",
     "build": "yarn build:clean && tsc",
     "test": "jest",
     "test:watch": "jest --watchAll"
