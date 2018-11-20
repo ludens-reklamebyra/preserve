@@ -1,4 +1,4 @@
-# Preserve :shipit:
+# Preserve
 
 A state lib for keeping track of and change localStorage data
 
