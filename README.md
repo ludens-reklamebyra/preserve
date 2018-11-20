@@ -2,6 +2,18 @@
 
 A state lib for keeping track of and change localStorage data
 
+## Install
+
+```sh
+ npm install @ludens-reklame/preserve
+```
+
+or with Yarn
+
+```sh
+yarn add @ludens-reklame/preserve
+```
+
 ## Basic usage
 
 ```ts
