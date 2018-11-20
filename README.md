@@ -22,4 +22,3 @@ myItem.subscribe((prevData, nextData) => {
   console.log(nextData); // 2
 });
 ```
-# preserve
