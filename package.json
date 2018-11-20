@@ -1,0 +1,51 @@
+{
+  "name": "@ludens-reklame/preserve",
+  "version": "0.1.0",
+  "description": "A handy localstorage util",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "private": false,
+  "jest": {
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
+    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && yarn build && yarn test"
+    }
+  },
+  "devDependencies": {
+    "@types/event-emitter": "^0.3.2",
+    "@types/jest": "^23.3.9",
+    "husky": "^1.1.4",
+    "jest": "^23.3.0",
+    "jest-localstorage-mock": "^2.3.0",
+    "prettier": "^1.15.2",
+    "pretty-quick": "^1.8.0",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.4",
+    "typescript": "^3.1.6"
+  },
+  "scripts": {
+    "prepublish": "yarn build",
+    "build:clean": "rimraf dist",
+    "build": "yarn build:clean && tsc",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  }
+}
