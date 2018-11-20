@@ -1,6 +1,6 @@
 {
   "name": "@ludens-reklame/preserve",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A handy localstorage util",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
