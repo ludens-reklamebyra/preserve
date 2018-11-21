@@ -21,6 +21,8 @@ function actualClear(key: string) {
   if (isBrowser()) {
     return window.localStorage.removeItem(key);
   }
+
+  return;
 }
 
 export { actualSet, actualGet, actualClear };

@@ -22,7 +22,7 @@ yarn add @ludens-reklame/preserve
 import preserve from '@ludens-reklame/preserve';
 
 // Make an item you want to keep track of.
-const myItem = preserve('myData', 1);
+const myItem = preserve('myData');
 
 // Get the current data from localStorage
 myItem.get();
@@ -31,8 +31,7 @@ myItem.get();
 myItem.set(2);
 
 // Listen to changes that happens within your localStorage item
-myItem.subscribe((prevData, nextData) => {
-  console.log(prevData); // 1
+myItem.subscribe(nextData => {
   console.log(nextData); // 2
 });
 ```
