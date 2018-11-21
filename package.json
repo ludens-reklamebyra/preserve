@@ -30,7 +30,6 @@
     }
   },
   "devDependencies": {
-    "@types/event-emitter": "^0.3.2",
     "@types/jest": "^23.3.9",
     "husky": "^1.1.4",
     "jest": "^23.3.0",
@@ -42,7 +41,7 @@
     "typescript": "^3.1.6"
   },
   "scripts": {
-    "prepublish": "yarn build",
+    "prepublish": "yarn build && yarn test",
     "build:clean": "rimraf lib",
     "build": "yarn build:clean && tsc",
     "test": "jest",
