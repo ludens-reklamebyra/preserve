@@ -21,7 +21,7 @@ export default function preserve(
    * Provides you with the current localStorage
    * data JSON-parsed.
    */
-  function get() {
+  function get<T>(): T {
     return actualGet(key);
   }
 
