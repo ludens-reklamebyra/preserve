@@ -7,28 +7,11 @@ describe('Preserve', () => {
     localStorage.clear();
   });
 
-  it('should work by not setting explicit initial data', () => {
-    const key = 'myData';
-    preserve(key);
-
-    expect(localStorage.setItem).toHaveBeenLastCalledWith(key, '[]');
-    expect(localStorage.__STORE__[key]).toBe('[]');
-    expect(Object.keys(localStorage.__STORE__).length).toBe(1);
-  });
-
-  it('should work by setting explicit initial data as second argument', () => {
-    const key = 'myData';
-    preserve(key, [1, 2, 3]);
-
-    expect(localStorage.setItem).toHaveBeenLastCalledWith(key, '[1,2,3]');
-    expect(localStorage.__STORE__[key]).toBe('[1,2,3]');
-    expect(Object.keys(localStorage.__STORE__).length).toBe(1);
-  });
-
   it('should be able to update data', () => {
     const key = 'myData';
     const initialData = { name: 'Øyvind' };
-    const item = preserve(key, initialData);
+    const item = preserve(key);
+    item.set(initialData);
 
     expect(localStorage.__STORE__[key]).toBe(`${JSON.stringify(initialData)}`);
 
@@ -45,19 +28,19 @@ describe('Preserve', () => {
 
   it('should listen to updates to the localStorage', done => {
     const key = 'myItem';
-    const item = preserve(key, 1);
+    const item = preserve(key);
+    item.set(1);
 
-    const listener = (prevItem: any, nextItem: any) => {
-      expect(prevItem).toEqual(1);
-      expect(nextItem).toEqual(2);
+    const listener = (nextItem: any) => {
+      expect(nextItem).toEqual(10);
 
       done();
     };
 
     item.subscribe(listener);
-    item.set(2);
+    item.set(10);
 
-    expect(localStorage.__STORE__[key]).toBe('2');
+    expect(localStorage.__STORE__[key]).toBe('10');
   });
 
   it('should throw an error if you do not provide a key.', () => {
@@ -69,7 +52,8 @@ describe('Preserve', () => {
 
   it('should be able to clear a preserved item.', () => {
     const key = 'myData';
-    const item = preserve(key, 1);
+    const item = preserve(key);
+    item.set(1);
     expect(localStorage.__STORE__[key]).toBe('1');
     expect(item.get()).toBe(1);
 
@@ -82,7 +66,8 @@ describe('Preserve', () => {
 
   it('should throw an error if you try to clear without a key', () => {
     expect(() => {
-      const item = preserve('myKey', 1);
+      const item = preserve('myKey');
+      item.set(1);
       // @ts-ignore
       item.clearItem();
     }).toThrow();

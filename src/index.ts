@@ -1,27 +1,19 @@
 import { actualGet, actualSet, actualClear } from './utils';
 import { IPreserve, ListenerType } from './Interfaces';
 
-export default function preserve(
-  key: string,
-  initialData: any = []
-): IPreserve {
+export default function preserve(key: string): IPreserve {
   if (!key) {
     throw new Error(`'Preserve' needs a key to keep track of you data.`);
   }
 
-  let currentData = initialData;
-  let prevData = currentData;
+  let currentData: any;
   const listeners: ListenerType[] = [];
-
-  if (currentData) {
-    set(currentData);
-  }
 
   /**
    * Provides you with the current localStorage
    * data JSON-parsed.
    */
-  function get<T>(): T {
+  function get() {
     return actualGet(key);
   }
 
@@ -32,9 +24,8 @@ export default function preserve(
   function set(data: any) {
     if (!data) throw new Error(`Please provide data to the 'set' method.`);
 
-    prevData = currentData;
     currentData = data;
-    listeners.forEach(l => l(prevData, currentData));
+    listeners.forEach(l => l(currentData));
     return actualSet(key, currentData);
   }
 
