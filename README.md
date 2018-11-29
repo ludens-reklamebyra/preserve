@@ -34,4 +34,7 @@ myItem.set(2);
 myItem.subscribe(nextData => {
   console.log(nextData); // 2
 });
+
+// Clear the item from localStorage
+myItem.clearItem();
 ```
