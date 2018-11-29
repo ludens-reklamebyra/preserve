@@ -47,11 +47,7 @@ export default function preserve(key: string): IPreserve {
     };
   }
 
-  function clearItem(key: string) {
-    if (!key) {
-      throw new Error(`Cannot clear localStorage item without the key.`);
-    }
-
+  function clearItem() {
     return actualClear(key);
   }
 

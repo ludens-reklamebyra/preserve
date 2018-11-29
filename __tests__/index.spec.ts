@@ -63,13 +63,4 @@ describe('Preserve', () => {
     expect(localStorage.__STORE__[key]).toBe(undefined);
     expect(item.get()).toBe(null);
   });
-
-  it('should throw an error if you try to clear without a key', () => {
-    expect(() => {
-      const item = preserve('myKey');
-      item.set(1);
-      // @ts-ignore
-      item.clearItem();
-    }).toThrow();
-  });
 });
