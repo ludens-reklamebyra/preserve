@@ -4,5 +4,5 @@ export interface IPreserve {
   get: <T>() => T;
   set: (data: any) => any;
   subscribe: (listener: ListenerType) => any;
-  clearItem: (key: string) => void;
+  clearItem: () => void;
 }
