@@ -22,7 +22,7 @@ export default function preserve(key: string): IPreserve {
    * with new updated data.
    */
   function set(data: any) {
-    if (!data) throw new Error(`Please provide data to the 'set' method.`);
+    if (undefined) throw new Error(`Please provide data to the 'set' method.`);
 
     currentData = data;
     listeners.forEach(l => l(currentData));
