@@ -26,6 +26,23 @@ describe('Preserve', () => {
     expect(item.get()).toEqual(JSON.parse(expected));
   });
 
+  it('should be able to update data if data is pure boolean values', () => {
+    const key = 'myData';
+    const item = preserve(key);
+    item.set(false);
+
+    expect(localStorage.__STORE__[key]).toBe(`${JSON.stringify(false)}`);
+  });
+
+  it('should fail if set method does not provide any data', () => {
+    const item = preserve('empty');
+
+    expect(() => {
+      // @ts-ignore
+      item.set();
+    }).toThrow();
+  });
+
   it('should listen to updates to the localStorage', done => {
     const key = 'myItem';
     const item = preserve(key);
@@ -58,7 +75,7 @@ describe('Preserve', () => {
     expect(item.get()).toBe(1);
 
     // clear item
-    item.clearItem(key);
+    item.clearItem();
 
     expect(localStorage.__STORE__[key]).toBe(undefined);
     expect(item.get()).toBe(null);
