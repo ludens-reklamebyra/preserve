@@ -25,6 +25,7 @@ export default function preserve(key: string): IPreserve {
     if (data === undefined) {
       throw new Error(`Please provide data to the 'set' method.`);
     }
+
     currentData = data;
     listeners.forEach(l => l(currentData));
     return actualSet(key, currentData);
