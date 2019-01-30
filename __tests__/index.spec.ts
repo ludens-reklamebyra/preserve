@@ -26,7 +26,7 @@ describe('Preserve', () => {
     expect(item.get()).toEqual(JSON.parse(expected));
   });
 
-  it('should be able to update data if data is boolean false', () => {
+  it('should be able to update data if data is pure boolean values', () => {
     const key = 'myData';
     const item = preserve(key);
     item.set(false);
