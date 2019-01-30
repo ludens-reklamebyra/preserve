@@ -34,6 +34,15 @@ describe('Preserve', () => {
     expect(localStorage.__STORE__[key]).toBe(`${JSON.stringify(false)}`);
   });
 
+  it('should fail if set method does not provide any data', () => {
+    const item = preserve('empty');
+
+    expect(() => {
+      // @ts-ignore
+      item.set();
+    }).toThrow();
+  });
+
   it('should listen to updates to the localStorage', done => {
     const key = 'myItem';
     const item = preserve(key);
